@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block header %}
+    <script src="{% static "js/cbAdmin.js" %}"></script></>
+    <script src="https://kit.fontawesome.com/bd7b0be23f.js" crossorigin="anonymous"></script>
+    <h3>Comment Box Admin</h3>
+{% endblock %}
+
+{% block content %}
+<button type="button" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+</button>
+
+<div id="commentBox" class="row">
+    <h3>Comment Box Email Address</h3>
+    <p>This is the address to which all submitted comments will be emailed</p>
+    {{ commentBoxForm }}
+</div>
+
+<div id="notification" class="row">
+    <h3>Notification List</h3>
+    <p>The following recipiants will recieve notification that a comment was submitted</p>
+    <div class="form-group">
+        <div class="input-group mb-3">
+            <input type="email" id="emailAdd">
+            <div class="input-group-append">
+                <button id='addEmailButton' type="button" class="btn btn-success"> Add </button>
+            </div> <br>
+            <div style="color:lightcoral" id="emailAddError"></div>
+        </div>
+    </div>
+</div>
+<div id="emailList" class="row"></div>
+
+
+
+
+{% endblock %}
