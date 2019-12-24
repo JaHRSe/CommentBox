@@ -1,6 +1,6 @@
 import json
 from django.core.exceptions import ValidationError
-from commentbox.models import NotificationList
+from commentbox.models import CommentBox, NotificationList
 from .forms import CommentBoxForm, NotificationListForm
 
 
@@ -8,7 +8,20 @@ def getNotifyList():
 
     data = NotificationList.objects.latest()
 
-    return data
+    if data:
+        return data.notificationList
+    else:
+        return []
+
+
+def getCommentBoxEmail():
+
+    address = CommentBox.objects.latest()
+
+    if address:
+        return address.emailAddress
+    else:
+        return ''
 
 
 def processAdminSave(data):
@@ -16,6 +29,7 @@ def processAdminSave(data):
         data = json.loads(data);
         # Save comment box email address
         form = CommentBoxForm({'emailAddress': data['commentBoxEmail']})
+
         if form.is_valid():
             form.save()
         else:

@@ -39,7 +39,7 @@ $( document ).ready(function() {
 saveUrl = "save/";
 
 function initialize(){
-    //window.notifyList = [];
+    render(); // Needed to populate notify list
 }
 
 ///////////////////////////////////////////////////////

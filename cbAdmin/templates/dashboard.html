@@ -5,7 +5,8 @@
     <script src="{% static "js/cbAdmin.js" %}"></script></>
     <script src="https://kit.fontawesome.com/bd7b0be23f.js" crossorigin="anonymous"></script>
     <script>
-    window.notifyList={{ notifyList  }}
+        console.log('test');
+        window.notifyList={{ notifyList |safe }}
     </script>
 {% endblock %}
 
@@ -14,14 +15,19 @@
 
     <div id="commentBox" class="row">
         <div class="col-sm">
-        <h3>Comment Box Email Address</h3>
-        This is the address to which all submitted comments will be emailed
+            <h3>Comment Box Email Address</h3>
+            This is the address to which all submitted comments will be emailed
         </div>
     </div>
 
     <div class="row">
         <div class="col-sm">
-            {{ commentBoxForm }}
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="far fa-envelope"></i></span>
+                 </div>
+                     <input type="text" class="" placeholder="{{commentBoxEmail}}" aria-label="Address" aria-describedby="basic-addon1">
+            </div>
         </div>
     </div>
 

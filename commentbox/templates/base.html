@@ -16,7 +16,14 @@
 <body>
     <div id="site-wrapper" class="container">
     <header>
-         {% block header %}{% endblock %}
+        <div class = "d-flex flex-row-reverse">
+            {% if user.is_authenticated %}
+                <p><a href="{% url 'logout' %}">logout</a></p>
+            {% else %}
+                <p><a href="{% url 'login' %}">login</a></p>
+            {% endif %}
+        </div>
+        {% block header %}{% endblock %}
     </header>
         {% block content %}
             if you see this, something is wrong!

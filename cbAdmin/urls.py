@@ -6,6 +6,5 @@ app_name = 'cbAdmin'
 urlpatterns = [
 
     path('', DashboardView.as_view(), name='dashboard'),
-    path('save/', Save.as_view(), name='save' ),
-
+    path('save/', Save.as_view(), name='save'),
 ]

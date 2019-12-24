@@ -1,13 +1,19 @@
 from django.shortcuts import render
 from django.views import View
 from django.http import JsonResponse
-from .services import getNotifyList
+from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.decorators import user_passes_test
+from .services import  getCommentBoxEmail, getNotifyList,processAdminSave
 
-from .forms import CommentBoxForm
-from commentbox.models import CommentBox
-from .services import processAdminSave
+def superuser_required():
+    def wrapper(wrapped):
+        class WrappedClass(UserPassesTestMixin, wrapped):
+            def test_func(self):
+                return self.request.user.is_superuser
+        return WrappedClass
+    return wrapper
 
-
+@superuser_required()
 class DashboardView(View):
 
     template = "dashboard.html"
@@ -15,15 +21,15 @@ class DashboardView(View):
     def get(self, request, *args, **kwargs):
 
         ctx = {
-            "commentBoxForm": CommentBoxForm(instance=CommentBox.objects.last()),
-            "notifyList" : getNotifyList(),
+            "commentBoxEmail": getCommentBoxEmail(),
+            "notifyList": getNotifyList(),
         }
 
         return render(request,
                       context=ctx,
                       template_name=self.template)
 
-
+@superuser_required()
 class Save(View):
 
     def post(self, request, *args, **kwargs):

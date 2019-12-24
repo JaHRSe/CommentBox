@@ -26,6 +26,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Login Stuff
+LOGOUT_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/cbAdmin/"
 
 # Application definition
 
@@ -52,6 +55,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'commentbox.urls'
+
 
 TEMPLATES = [
     {
