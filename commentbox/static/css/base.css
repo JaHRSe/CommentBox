@@ -1,0 +1,17 @@
+{% load static %}
+#content{
+    background-image: url('../images/contrails.jpg');
+    background-repeat: no-repeat;
+    height: ;
+}
+
+#header:after{
+
+}
+
+#footer{
+    height: 20px;
+    background-color: dimgrey;
+    max-width: 1000px;
+}
+

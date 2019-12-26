@@ -1,13 +1,32 @@
 {% extends 'base.html' %}
 
+{% block header %}
 
+{% endblock %}
 
 {% block content %}
-    <div id="commentForm">
-        <form method="post">
-            {% csrf_token %}
-            {{ form.comment }}
-            <button type="submit">Submit</button>
-        </form>
+
+    <div id="content" class="row" style="max-width: 1000px; min-height: 400px">
+        <div id="commentForm" class="col" style="padding-top: 20px" >
+            <textarea class="form-control" rows="10" id="comment" placeholder="Write your comment here."></textarea>
+        </div>
+    </div>
+
+    <div class="row" style="padding: 20px">
+        <div class="col">
+            <p>
+                <h4>File Upload</h4>
+                Got a PDF, Image, or other file you'd like to upload?
+            </p>
+            <button class="btn btn-success">Submit</button>
+        </div>
+    </div>
+
+    <div class="row" style="background-color: dimgrey; height:20px;">
+
+    </div>
+
+    <div    class="row">
+    Anonyomous gurantee: The source code that powers this site is located here.
     </div>
 {% endblock %}
