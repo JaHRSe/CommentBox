@@ -1,12 +1,17 @@
 from django import forms
-from .models import Comment
+from .models import Comment, Upload
 
 
 class CommentForm(forms.ModelForm):
 
     class Meta:
         model = Comment
-        fields = "__all__"
+        fields = ['comment']
+
+class UploadForm(forms.ModelForm):
+    class Meta:
+        model = Upload
+        fields = ['name', 'file']
 
 
 

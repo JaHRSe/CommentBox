@@ -17,3 +17,8 @@ class NotificationListForm(forms.ModelForm):
     class Meta:
         model=NotificationList
         fields=('notificationList',)
+
+
+class CommentUpload(forms.Form):
+
+    pass

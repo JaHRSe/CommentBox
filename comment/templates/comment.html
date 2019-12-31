@@ -1,27 +1,37 @@
+
 {% extends 'base.html' %}
-
+{% load static %}
 {% block header %}
-
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+    <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+    <script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
+    <script src='{% static "js/comment.js" %}'></script>
 {% endblock %}
 
 {% block content %}
-
-    <div id="content" class="row" style="max-width: 1000px; min-height: 400px">
-        <div id="commentForm" class="col" style="padding-top: 20px" >
-            <textarea class="form-control" rows="10" id="comment" placeholder="Write your comment here."></textarea>
+    {% csrf_token %}
+    <div id="content" class="row" style=" min-height: 400px">
+        <div class="col">
+            <div id="commentForm" class="col" style="padding-top: 20px" >
+                <textarea id="comment" class="form-control" rows="10" id="comment" placeholder="Write your comment here."></textarea>
+            </div>
         </div>
     </div>
 
     <div class="row" style="padding: 20px">
-        <div class="col">
+        <div class="col-sm">
             <p>
-                <h4>File Upload</h4>
                 Got a PDF, Image, or other file you'd like to upload?
             </p>
-            <button class="btn btn-success">Submit</button>
+            <input type="file"
+                   id="fileUploadInput"
+                   data-form-data='{"csrfmiddlewaretoken": "{{ csrf_token }}"}'/>
+
+            <button id="submitCommentButton" class="btn btn-success" style="float:right">Submit</button>
         </div>
     </div>
 
+{#    decorative bottom bar#}
     <div class="row" style="background-color: dimgrey; height:20px;">
 
     </div>
