@@ -6,6 +6,7 @@ from django.utils.decorators import method_decorator
 from django.http import JsonResponse
 from .models import Upload
 import json
+from .services import emailComment
 
 class Comment(View):
 
@@ -43,6 +44,8 @@ class Comment(View):
             obj.comment = comment
             obj.save()
 
+        # Send out email notification
+        emailComment(comment)
 
         return redirect('comment:comment')
 
