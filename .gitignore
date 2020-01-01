@@ -1,1 +1,3 @@
 /uploads/*
+*pycache*
+comment/__pycache__/*

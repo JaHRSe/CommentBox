@@ -10,15 +10,17 @@
 
 {% block content %}
     {% csrf_token %}
-    <div id="content" class="row" style=" min-height: 400px">
+    <div id="content" class="row" style=" min-height: 200px">
         <div class="col">
-            <div id="commentForm" class="col" style="padding-top: 20px" >
-                <textarea id="comment" class="form-control" rows="10" id="comment" placeholder="Write your comment here."></textarea>
+            <div id="commentForm" class="col" style="padding: 10px" >
+                <textarea id="comment" class="form-control" rows="10" id="comment" placeholder="Write your comment here, it will be viewed by EADS commanders."></textarea>
             </div>
         </div>
     </div>
-
-    <div class="row" style="padding: 20px">
+     <div id="submitSuccessMsg" class="alert alert-success row" role="alert" style="display: none">
+            You're comment has been submitted, thank you!
+    </div>
+    <div class="row" style="padding: 10px">
         <div class="col-sm">
             <p>
                 Got a PDF, Image, or other file you'd like to upload?
@@ -26,17 +28,19 @@
             <input type="file"
                    id="fileUploadInput"
                    data-form-data='{"csrfmiddlewaretoken": "{{ csrf_token }}"}'/>
-
             <button id="submitCommentButton" class="btn btn-success" style="float:right">Submit</button>
         </div>
-    </div>
 
+    </div>
+    <div id="emblemDiv" class="row justify-content-center">
+        <img id="emblemImg" style="width: 200px; height: 200px" src="{% static "images/emblem.jpg" %}" alt="EADS Emblem">
+    </div>
 {#    decorative bottom bar#}
     <div class="row" style="background-color: dimgrey; height:20px;">
 
     </div>
 
     <div    class="row">
-    Anonyomous gurantee: The source code that powers this site is located here.
+    <span style="padding: 5px"> Anonyomous gurantee: The source code that powers this site is located here.</span>
     </div>
 {% endblock %}

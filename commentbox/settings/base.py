@@ -113,10 +113,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'app1/static/'),
-    os.path.join(BASE_DIR, 'app2/static/'),
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'comment/static/'),
+#     os.path.join(BASE_DIR, 'commentbox/static/'),
+# ]
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'

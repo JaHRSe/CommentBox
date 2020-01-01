@@ -57,9 +57,13 @@ function processForm(){
 
     let url = '';
 
-    let callBack = function(){console.log('success!')};
+    let callBack = function(){postFormSubmit()};
 
     sendPost(data,url,callBack);
+}
+
+function postFormSubmit(){
+    $('#submitSuccessMsg').show();
 }
 
 ///////////////////////////////////////////////////////
