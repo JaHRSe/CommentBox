@@ -15,9 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from .views import LoginView
+
+app_name = 'commentbox'
 
 urlpatterns = [
-    path('', include('comment.urls')),
+    path('', LoginView.as_view(), name='anonLogin'),
+    path('comment/', include('comment.urls')),
     path('cbAdmin/', include('cbAdmin.urls')),
     path('accounts/',include('django.contrib.auth.urls'))
 ]

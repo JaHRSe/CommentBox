@@ -6,6 +6,7 @@ from django.utils.decorators import method_decorator
 from django.http import JsonResponse
 from .models import Upload
 import json
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .services import emailComment
 
 class Comment(View):
@@ -16,6 +17,10 @@ class Comment(View):
 
     def get(self, request, *args, **kwargs):
 
+        # Make sure user is logged in
+        if not request.user.is_authenticated:
+            return redirect('anonLogin')
+
         ctx = {'form':self.form()}
 
         return render(request,
@@ -23,6 +28,9 @@ class Comment(View):
                       context=ctx)
 
     def post(self, request, *args, **kwargs):
+
+        if not request.user.is_authenticated:
+            return redirect('anonLogin')
 
         data = json.loads(request.body)
 
@@ -51,7 +59,7 @@ class Comment(View):
 
 
 @method_decorator(csrf_exempt, name='dispatch')
-class UploadView(View):
+class UploadView(LoginRequiredMixin, View):
 
     form = UploadForm
 

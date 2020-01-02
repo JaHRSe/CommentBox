@@ -10,15 +10,18 @@
 
 {% block content %}
     {% csrf_token %}
-    <div id="content" class="row" style=" min-height: 200px">
+    <div id="CommentContent" class="row" style=" min-height: 200px">
         <div class="col">
             <div id="commentForm" class="col" style="padding: 10px" >
-                <textarea id="comment" class="form-control" rows="10" id="comment" placeholder="Write your comment here, it will be viewed by EADS commanders."></textarea>
+                <textarea id="comment" class="form-control" rows="10" id="comment" placeholder="Write your comment here, it will be viewed by leadership."></textarea>
             </div>
         </div>
     </div>
-     <div id="submitSuccessMsg" class="alert alert-success row" role="alert" style="display: none">
-            You're comment has been submitted, thank you!
+    <div align="right" style="width: 50px">
+
+    </div>
+    <div id="submitSuccessMsg" align="center" class="alert alert-success justify-content-center" role="alert" style=" display: none ">
+         Thank you for your comment!
     </div>
     <div class="row" style="padding: 10px">
         <div class="col-sm">
@@ -42,5 +45,17 @@
 
     <div    class="row">
     <span style="padding: 5px"> Anonyomous gurantee: The source code that powers this site is located here.</span>
+    </div>
+    <div class = "row" style="padding: 10px" >
+        <div class="col">
+        <div align="right">
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}">logout</a>
+                <a href="{% url 'comment:comment' %}">Home  </a>
+            {% else %}
+                <p><a href="{% url 'login' %}">Admin login</a></p>
+            {% endif %}
+        </div>
+        </div>
     </div>
 {% endblock %}

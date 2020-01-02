@@ -20,7 +20,7 @@
 
         <div id="header" class="row justify-content-center" style="padding: 4px">
                 <p>
-                <h5>EADS Anonymous Comment:</h5>
+                <h5>EADS Comment Box:</h5>
 
                 </p>
         </div>
@@ -30,18 +30,7 @@
                 if you see this, something is wrong!
             {% endblock content %}
     </div>
-    <div class = "row" style="padding: 10px" >
-        <div class="col">
-        <div align="right">
-            {% if user.is_authenticated %}
-                <a href="{% url 'logout' %}">logout</a>
-                <a href="{% url 'comment:comment' %}">Home  </a>
-            {% else %}
-                <p><a href="{% url 'login' %}">Admin login</a></p>
-            {% endif %}
-        </div>
-        </div>
-    </div>
+
 </body>
 <footer class="row">
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

@@ -1,5 +1,5 @@
 {% load static %}
-#content{
+#commentContent{
     background-image: url('../images/contrails.jpg');
     background-repeat: no-repeat;
 }

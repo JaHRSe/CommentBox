@@ -1,5 +1,7 @@
 $( document ).ready(function() {
     $('#submitCommentButton').on('click',function (){
+        // Hide success msg if present
+        $('#submitSuccessMsg').hide();
         processForm();
     });
 
@@ -63,7 +65,12 @@ function processForm(){
 }
 
 function postFormSubmit(){
+
     $('#submitSuccessMsg').show();
+
+    $('#comment').val('');
+
+    $('#comment').attr('placeholder','Write your comment here, it will be viewed by leadership.')
 }
 
 ///////////////////////////////////////////////////////
@@ -80,7 +87,7 @@ function sendPost(data, url, callback){
             callback(result);
         },
         errror:function(request,error){
-            alert('Could not save data')
+           //
         }
     })
 }
