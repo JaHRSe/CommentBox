@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+
+#SECRET_KEY = #os.environ.get("SECRET_KEY")
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -42,6 +45,7 @@ INSTALLED_APPS = [
     'cbAdmin',
     'commentbox',
     'comment',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'commentbox.urls'
@@ -118,8 +123,20 @@ STATIC_URL = '/static/'
 #     os.path.join(BASE_DIR, 'commentbox/static/'),
 # ]
 
+###############
+# Email Setup
+###############
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'eadscommentbox@gmail.com'
 EMAIL_HOST_PASSWORD = os.environ.get("GMAIL_PASS", '')
 EMAIL_PORT = 587
+
+##################
+# AWS S3 setup
+###################
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_ACCESS_KEY")
+AWS_STORAGE_BUCKET_NAME = 'eadscommentbox'
+
+DEFAULT_FILE_STORAGE = 'commentbox.settings.storage_backends.UploadStorage'

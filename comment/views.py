@@ -8,6 +8,7 @@ from .models import Upload
 import json
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .services import emailComment
+from .tasks import email
 
 class Comment(View):
 
@@ -54,6 +55,7 @@ class Comment(View):
 
         # Send out email notification
         emailComment(comment)
+        # email.delay(comment.id)
 
         return redirect('comment:comment')
 
