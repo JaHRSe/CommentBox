@@ -53,7 +53,7 @@ class Comment(View):
             obj.save()
 
         # Send out email notification
-        #emailComment(comment)
+        emailComment(comment)
 
         return redirect('comment:comment')
 

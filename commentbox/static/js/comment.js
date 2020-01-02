@@ -5,6 +5,8 @@ $( document ).ready(function() {
         processForm();
     });
 
+    FilePond.registerPlugin(FilePondPluginFileValidateSize);
+
     // File Upload
     fileUploadSetup();
 
@@ -14,15 +16,16 @@ function fileUploadSetup(){
 
     $('#fileUploadInput').filepond({
         allowMultiple:true,
-        maxFileSize: '3MB',
+        // maxFileSize: '3MB',
     });
 
     $(function(){
 
     $.fn.filepond.setDefaults({
-        maxFileSize: '3MB',
+        maxFileSize: '10MB',
+        maxFiles: 4,
         server: {
-            url: 'http://localhost:8000/',
+            url: 'http://localhost:8000/comment/',
             process: 'upload/',
             revert: null,
             restore: null,
