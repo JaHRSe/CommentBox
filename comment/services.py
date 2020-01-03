@@ -14,7 +14,7 @@ def sendMail(emailTxt, attachments):
                        'eadscommentbox@gmail.com',
                        nl)
     for file in attachments:
-        msg.attach_file(file.file.path)
+        msg.attach(file.file.name, file.file.read())
 
     msg.send()
 

@@ -1,5 +1,6 @@
 from django.db import models
 from commentbox.models import CommentBox
+from commentbox.settings.storage_backends import UploadStorage
 import uuid
 
 class Comment(models.Model):
@@ -17,7 +18,7 @@ class Upload(models.Model):
 
     name = models.TextField(max_length=100)
 
-    file = models.FileField(upload_to='uploads/')
+    file = models.FileField(storage=UploadStorage())
 
     comment = models.ForeignKey(Comment, on_delete=models.PROTECT, null=True)
 

@@ -55,7 +55,7 @@ class Comment(View):
 
         # Send out email notification
         emailComment(comment)
-        # email.delay(comment.id)
+        #email.delay(comment.id)
 
         return redirect('comment:comment')
 
