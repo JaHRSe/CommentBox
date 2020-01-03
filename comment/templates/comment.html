@@ -27,7 +27,7 @@
     <div class="row" style="padding: 10px">
         <div class="col-sm">
             <p>
-                Got a PDF, Image, or other file you'd like to upload?  (Max 10MB/file, 20MB total)
+                Got a PDF, Image, or other file you'd like to upload?  (20MB limit)
             </p>
             <input type="file"
                    id="fileUploadInput"
@@ -45,12 +45,12 @@
     </div>
 
     <div    class="row">
-    <span style="padding: 5px"> Anonyomous gurantee: The source code that powers this site is located here.</span>
+    <span style="padding: 5px"> Anonymity gurantee: The source code that powers this site is located here.</span>
     </div>
     <div class = "row" style="padding: 10px" >
         <div class="col">
         <div align="right">
-            {% if user.is_authenticated %}
+            {% if user.is_superuser %}
                 <a href="{% url 'logout' %}">logout</a>
                 <a href="{% url 'comment:comment' %}">Home  </a>
             {% else %}

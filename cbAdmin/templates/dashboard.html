@@ -12,7 +12,7 @@
 
 {% block content %}
     {% csrf_token %}
-
+     <a href="{% url 'logout' %}">logout</a>
     <div id="commentBox" class="row">
         <div class="col-sm">
             <h3>Comment Box Email Address</h3>

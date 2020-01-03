@@ -3,6 +3,7 @@ from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from commentbox.models import NotificationList, CommentBox
 
+
 def sendMail(emailTxt, attachments):
 
     inbox = CommentBox.objects.latest().emailAddress

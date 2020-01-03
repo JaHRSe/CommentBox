@@ -22,8 +22,9 @@ function fileUploadSetup(){
     $(function(){
 
     $.fn.filepond.setDefaults({
-        maxFileSize: '10MB',
-        maxFiles: 4,
+        // maxFileSize: '10MB',
+        // maxFiles: 4,
+        maxTotalFileSize: '20MB',
         server: {
             url: 'http://localhost:8000/comment/',
             process: 'upload/',
@@ -73,7 +74,11 @@ function postFormSubmit(){
 
     $('#comment').val('');
 
-    $('#comment').attr('placeholder','Write your comment here, it will be viewed by leadership.')
+    setTimeout(function(){
+      location.reload();
+    }, 2000);
+
+    // $('#comment').attr('placeholder','Write your comment here, it will be viewed by leadership.')
 }
 
 ///////////////////////////////////////////////////////

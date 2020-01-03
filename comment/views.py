@@ -54,8 +54,8 @@ class Comment(View):
             obj.save()
 
         # Send out email notification
-        emailComment(comment)
-        #email.delay(comment.id)
+        #emailComment(comment)
+        email.delay(comment.id)
 
         return redirect('comment:comment')
 
