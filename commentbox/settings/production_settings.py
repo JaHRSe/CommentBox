@@ -16,3 +16,10 @@ DATABASES = {
         "PORT": "5432",
     }
 }
+
+#############
+# Celery
+#############
+
+CELERY_BROKER_URL = os.environ.get("REDIS_URL")
+CELERY_RESULTS_BACKEND = os.environ.get("REDIS_URL")
