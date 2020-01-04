@@ -6,10 +6,8 @@ from .forms import CommentBoxForm, NotificationListForm
 
 def getNotifyList():
 
-    data = NotificationList.objects.latest()
-
-    if data:
-        return data.notificationList
+    if NotificationList.objects.exists():
+        return NotificationList.objects.latest()
     else:
         return []
 
