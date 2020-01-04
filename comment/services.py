@@ -7,7 +7,11 @@ from commentbox.models import NotificationList, CommentBox
 def sendMail(emailTxt, attachments):
 
     inbox = CommentBox.objects.latest().emailAddress
-    nl = NotificationList.objects.latest().notificationList
+
+    nl = []
+    if NotificationList.objects.exists():
+        nl = NotificationList.objects.latest().notificationList
+
     nl.append(inbox)
 
     msg = EmailMessage('Comment submitted',
