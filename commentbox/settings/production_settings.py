@@ -4,4 +4,15 @@ DEBUG = False
 
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
 
-ALLOWED_HOSTS= ['eadscommentbox.herokuapp.com',]
+ALLOWED_HOSTS= ['eadscommentbox.herokuapp.com', ]
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "d29kp7mhfu4etj",
+        "USER": "zhzxexhflkrgsm",
+        "PASSWORD": os.environ.get("DATABASE_PASS"),
+        "HOST": os.environ.get("DATABASE_URL"),
+        "PORT": "5432",
+    }
+}
