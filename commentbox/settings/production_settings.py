@@ -12,7 +12,7 @@ DATABASES = {
         "NAME": "d29kp7mhfu4etj",
         "USER": "zhzxexhflkrgsm",
         "PASSWORD": os.environ.get("DATABASE_PASS"),
-        "HOST": os.environ.get("DATABASE_URL"),
+        "HOST": 'ec2-174-129-33-107.compute-1.amazonaws.com',
         "PORT": "5432",
     }
 }
