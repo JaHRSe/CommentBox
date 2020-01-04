@@ -1,3 +1,4 @@
 uploads/*
 *pycache*
 comment/__pycache__/*
+dump.rdb
