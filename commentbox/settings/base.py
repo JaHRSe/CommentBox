@@ -137,6 +137,8 @@ EMAIL_HOST_USER = 'eadscommentbox@gmail.com'
 EMAIL_HOST_PASSWORD = os.environ.get("GMAIL_PASS", '')
 EMAIL_PORT = 587
 
+ADMINS=[('eads_admin','eadscommentbox@gmail.com')]
+
 ##################
 # AWS S3 setup
 ###################

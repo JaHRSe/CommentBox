@@ -4,9 +4,7 @@ from django.contrib.postgres.fields import JSONField
 
 class CommentBox(models.Model):
 
-    default='EADSCommentBox@gmail.com'
-
-    emailAddress = models.EmailField(blank=False, default = default)
+    emailAddress = models.EmailField(blank=False, default='EADSCommentBox@gmail.com')
 
     created = models.DateTimeField(auto_now_add=True)
 
