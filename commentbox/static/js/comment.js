@@ -26,7 +26,7 @@ function fileUploadSetup(){
         // maxFiles: 4,
         maxTotalFileSize: '20MB',
         server: {
-            url: 'http://localhost:8000/comment/',
+            url: '/comment/',
             process: 'upload/',
             revert: null,
             restore: null,
@@ -78,7 +78,7 @@ function postFormSubmit(){
       location.reload();
     }, 2000);
 
-    // $('#comment').attr('placeholder','Write your comment here, it will be viewed by leadership.')
+    // $('#comment').attr('placeholder','Write a comment here. Unless you tell us your name, your comment will be 100% anonymous')
 }
 
 ///////////////////////////////////////////////////////
