@@ -58,7 +58,7 @@ function createNotifyList(){
             '<i id="removeButtonIcon_'+i+ '" class="fas fa-user-minus"></i></button>' +
             '</th></tr>';
     }
-    $('#notifyList').html('<table class="table">'+tableRows+'</table>');
+    $('#notifyListDiv').html('<table class="table">'+tableRows+'</table>');
 };
 
 ///////////////////////////////////////////////////////

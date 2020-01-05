@@ -74,9 +74,11 @@ function postFormSubmit(){
 
     $('#comment').val('');
 
-    setTimeout(function(){
-      location.reload();
-    }, 2000);
+    $('#submitCommentButton').prop('disabled', true);
+    $('#submitCommentButton').css('color','lightgrey');
+    // setTimeout(function(){
+    //   location.reload();
+    // }, 2000);
 
     // $('#comment').attr('placeholder','Write a comment here. Unless you tell us your name, your comment will be 100% anonymous')
 }
