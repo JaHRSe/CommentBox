@@ -2,3 +2,4 @@ uploads/*
 *pycache*
 comment/__pycache__/*
 dump.rdb
+*.DS_Store
