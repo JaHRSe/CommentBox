@@ -3,4 +3,4 @@ An anonymous comment was submitted via www.eadscommentbox.com on: {{date}}:
 Attachments {{attachmentCount}}
 
 Comment:
-{{comment}}
+{{comment|safe}}
