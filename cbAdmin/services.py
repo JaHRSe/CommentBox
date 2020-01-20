@@ -1,21 +1,24 @@
 import json
 from django.core.exceptions import ValidationError
-from commentbox.models import CommentBox, NotificationList
+from commentbox.models import CommentBox, NotificationList,CbType
 from .forms import CommentBoxForm, NotificationListForm
 
 
-def getNotifyList():
+def getNotifyList(boxType):
 
-    if NotificationList.objects.exists():
-        nl = NotificationList.objects.latest()
-        return nl.notificationList
+    if NotificationList.objects.filter(type=boxType.value).exists():
+        nl = NotificationList.objects.filter(type=boxType.value).latest()
+        return nl.nl
     else:
         return []
 
 
-def getCommentBoxEmail():
+def getCommentBoxEmail(boxType):
 
-    address = CommentBox.objects.latest()
+    address = None
+
+    if CommentBox.objects.filter(type=boxType.value).exists():
+        address = CommentBox.objects.filter(type=boxType.value).latest()
 
     if address:
         return address.emailAddress
@@ -24,10 +27,10 @@ def getCommentBoxEmail():
 
 
 def processAdminSave(data):
+
     try:
-        data = json.loads(data);
         # Save comment box email address
-        form = CommentBoxForm({'emailAddress': data['commentBoxEmail']})
+        form = CommentBoxForm({'emailAddress': data['commentBoxEmail'], 'type': data['cbType'].name})
 
         if form.is_valid():
             form.save()
@@ -35,7 +38,7 @@ def processAdminSave(data):
             raise ValidationError(form.errors)
 
         # save notification list
-        form = NotificationListForm({'notificationList': data['notificationList']})
+        form = NotificationListForm({'notificationList': data['notificationList'], 'type': data['cbType'].name})
         if form.is_valid():
             form.save()
         else:

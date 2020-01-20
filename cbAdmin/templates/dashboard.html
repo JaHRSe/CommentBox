@@ -1,73 +1,10 @@
 {% extends "base.html" %}
-{% load static %}
-
-{% block header %}
-    <script src="{% static "js/cbAdmin.js" %}"></script></>
-    <script src="https://kit.fontawesome.com/bd7b0be23f.js" crossorigin="anonymous"></script>
-    <script>
-        window.notifyList={{ notifyList |safe }};
-        if (!window.notifyList){
-            window.notifyList=[];
-        }
-    </script>
-{% endblock %}
 
 {% block content %}
-    {% csrf_token %}
-     <a href="{% url 'logout' %}">logout</a>
-    <div id="commentBox" class="row">
-        <div class="col-sm">
-            <h3>Comment Box Email Address</h3>
-            This is the address to which all submitted comments will be emailed
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1"><i class="far fa-envelope"></i></span>
-                 </div>
-                     <input id="commentBoxInput" type="text" class="" value="{{commentBoxEmail}}" aria-label="Address" aria-describedby="basic-addon1">
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm">
-            <h3>Notification List</h3>
-            <p>The following recipiants will recieve notification that a comment was submitted</p>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm">
-            <div class="form-group">
-                <div class="input-group mb-3">
-                    <input type="email" id="emailAdd">
-                    <div class="input-group-append">
-                        <button id='addEmailButton' type="button" class="btn btn-success"> Add </button>
-                    </div> <br>
-                    <div style="color:lightcoral" id="emailAddError"></div>
-                </div>
-                </div>
-            </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm">
-            <div id="notifyListDiv">
-
-            </div>
-        </div>
-    </div>
-
-     <div id="notifyListSave" class="row">
-        <div class="col-sm">
-        <div id="save">
-            <button id="saveButton" type="button" class="btn btn-primary ">Save</button>
-        </div>
-        <div id="saveResult"></div>
-    </div>
-
+    <table class="table">
+        <tbody>
+        <tr><th><a href="{% url 'cbAdmin:ss-dashboard' %}">Support Squadron</a></th></tr>
+        <tr><th><a href="{% url 'cbAdmin:hra-dashboard' %}">HRA</a></th></tr>
+        </tbody>
+    </table>
 {% endblock %}

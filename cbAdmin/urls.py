@@ -1,10 +1,12 @@
 from django.urls import path
-from .views import DashboardView, Save
+from .views import  index, Save, SSDashboardView, HRADashboardView
 
 app_name = 'cbAdmin'
 
 urlpatterns = [
 
-    path('', DashboardView.as_view(), name='dashboard'),
-    path('save/', Save.as_view(), name='save'),
+    path('', index, name='dashboard'),
+    path('ss/', SSDashboardView.as_view(), name='ss-dashboard'),
+    path('hra/', HRADashboardView.as_view(), name='hra-dashboard'),
+   # path('save/', Save.as_view(), name='save'),
 ]

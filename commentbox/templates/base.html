@@ -4,7 +4,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}{% endblock title %}</title>
     {% block head_favicon %}
     {% endblock head_favicon %}
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -22,12 +21,12 @@
 
         <div id="header" class="row justify-content-center" style="padding: 4px">
                 <p>
-                <h5 style="padding: 10px">224 SS Comment Box</h5>
-
+                <h2 style="padding: 10px">224 SS Comment Box</h2>
                 </p>
         </div>
         {% block header %}{% endblock %}
     </header>
+    <h3 style="padding: 10px">{% block title %}{% endblock %}</h3>
             {% block content %}
                 if you see this, something is wrong!
             {% endblock content %}
