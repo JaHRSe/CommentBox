@@ -6,7 +6,8 @@ class CommentForm(forms.ModelForm):
 
     class Meta:
         model = Comment
-        fields = ['comment']
+        fields = ['comment', 'type']
+
 
 class UploadForm(forms.ModelForm):
     class Meta:

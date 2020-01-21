@@ -1,9 +1,12 @@
 from django.db import models
-from commentbox.models import CommentBox
+from commentbox.models import CommentBox, CbType
 from commentbox.settings.storage_backends import UploadStorage
 import uuid
 
+
 class Comment(models.Model):
+
+    type = models.CharField(max_length=50, choices=CbType.choices(), blank=True, default='')
 
     box = models.ManyToManyField(CommentBox)
 

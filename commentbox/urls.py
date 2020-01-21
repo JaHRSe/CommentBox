@@ -23,5 +23,5 @@ urlpatterns = [
     path('', LoginView.as_view(), name='anonLogin'),
     path('comment/', include('comment.urls')),
     path('cbAdmin/', include('cbAdmin.urls')),
-    path('accounts/',include('django.contrib.auth.urls'))
+    path('accounts/', include('django.contrib.auth.urls'))
 ]

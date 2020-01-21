@@ -10,11 +10,12 @@
 {% endblock %}
 
 {% block content %}
+    <h4 style="text-align: center">{{ name }} Comment Form</h4>
     {% csrf_token %}
     <div id="CommentContent" class="row" style=" min-height: 200px">
         <div class="col">
             <div id="commentForm" class="col" style="padding: 10px" >
-                <textarea id="comment" class="form-control" rows="10" id="comment" placeholder="Write a comment here. Unless you tell us your name, your comment will be 100% anonymous. All comments  are submitted to the CC and Chief."></textarea>
+                <textarea id="comment" class="form-control" rows="10" id="comment" placeholder="Write a comment here. Unless you tell us your name, your comment will be 100% anonymous. All comments will be securely emailed to the {{submitGroup}}."></textarea>
             </div>
         </div>
     </div>

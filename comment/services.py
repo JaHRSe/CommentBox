@@ -4,13 +4,20 @@ from django.template.loader import render_to_string
 from commentbox.models import NotificationList, CommentBox
 
 
-def sendMail(emailTxt, attachments):
+def sendMail(emailTxt, attachments, cbType):
 
-    inbox = CommentBox.objects.latest().emailAddress
+    try:
+        inbox = CommentBox.objects.filter(type=cbType).latest().emailAddress
+    except:
+        inbox = ''
 
-    nl = []
-    if NotificationList.objects.exists():
-        nl = NotificationList.objects.latest().notificationList
+
+    nl=None
+
+    if NotificationList.objects.filter(type=cbType).exists():
+        nl = NotificationList.objects.filter(type=cbType).latest().notificationList
+
+    if not nl: nl = []
 
     nl.append(inbox)
 
@@ -39,7 +46,7 @@ def emailComment(comment):
 
     msg_plain= render_to_string('commentEmail', ctx)
 
-    sendMail(msg_plain, attachments)
+    sendMail(msg_plain, attachments, comment.type)
 
 
 

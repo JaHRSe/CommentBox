@@ -5,10 +5,12 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from django.http import JsonResponse
 from .models import Upload
+from commentbox.models import CbType
 import json
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .services import emailComment
 from .tasks import email
+
 
 class Comment(View):
 
@@ -16,13 +18,23 @@ class Comment(View):
 
     template = "comment.html"
 
+    type = CbType.SS
+
+    name = 'Support Squadron'
+
+    submitGroup = 'CC and Chief'
+
     def get(self, request, *args, **kwargs):
 
         # Make sure user is logged in
         if not request.user.is_authenticated:
             return redirect('anonLogin')
 
-        ctx = {'form':self.form()}
+        ctx = {'form': self.form(),
+               'type': self.type.value,
+               'name': self.name,
+               'submitGroup': self.submitGroup,
+               }
 
         return render(request,
                       template_name=self.template,
@@ -34,6 +46,7 @@ class Comment(View):
             return redirect('anonLogin')
 
         data = json.loads(request.body)
+        data['type'] = self.type.name
 
         # Save the comment
         form = self.form(data)
@@ -59,6 +72,13 @@ class Comment(View):
 
         return redirect('comment:comment')
 
+class HRAView(Comment):
+
+    type = CbType.HRA
+
+    name = 'Human Resource Advisor'
+
+    submitGroup = 'HRA'
 
 @method_decorator(csrf_exempt, name='dispatch')
 class UploadView(LoginRequiredMixin, View):
