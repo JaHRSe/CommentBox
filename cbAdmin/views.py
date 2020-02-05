@@ -4,6 +4,7 @@ from django.http import JsonResponse
 from django.contrib.auth.mixins import UserPassesTestMixin
 from commentbox.models import CommentBox, NotificationList, CbType
 from .services import  getCommentBoxEmail, getNotifyList,processAdminSave
+from .forms import CommentResponseForm
 import json
 
 def superuser_required():
@@ -28,6 +29,7 @@ class DashboardView(View):
         ctx = {
             "commentBoxEmail": getCommentBoxEmail(self.type),
             "notifyList": getNotifyList(self.type),
+            "commenttype": '224 SS',
         }
 
         return render(request,
@@ -69,3 +71,27 @@ class HRADashboardView(DashboardView):
     template = "hra-dashboard.html"
     type = CbType.HRA
 
+@superuser_required()
+class CommentResponse(View):
+
+    type = None
+
+    def post(self, request, *args, **kwargs):
+
+        data = json.loads(request.body)
+
+        data['type'] = self.type
+
+        form = CommentResponseForm(data)
+
+        if form.is_valid():
+            response = form.save()
+            return JsonResponse({})
+        else:
+            errors = form.errors.as_json()
+            return JsonResponse(errors, status=400, safe=False)
+
+
+class SSCommentResponse(CommentResponse):
+
+    type = CbType.SS.value

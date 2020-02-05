@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/commentbox.iml" filepath="$PROJECT_DIR$/.idea/commentbox.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../pmp/.idea/pmp.iml" filepath="$PROJECT_DIR$/../pmp/.idea/pmp.iml" />
     </modules>
   </component>
 </project>
