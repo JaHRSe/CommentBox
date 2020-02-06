@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import  index, Save, SSDashboardView, HRADashboardView, SSCommentResponse
+from .views import index,SSDashboardView, HRADashboardView, SSCommentResponse
 
 app_name = 'cbAdmin'
 

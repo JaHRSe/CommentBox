@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+    <link rel="stylesheet" href='{% static "css/cr.css" %}'>
+    <link rel="stylesheet" href='{% static "css/base.css" %}'>
+    <script src="{% static "js/cr.js" %}"></script></>
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="row">
+    <div class="col">
+        {% for response in cr %}
+            <div class="card m-3">
+                <div class="card-header">
+                    {{response.title}}
+                </div>
+                <div class="card-body ">
+                    <section class="responsetext {% if response.wordcount > 100 %}truncate{% endif %}"  id="responsetext">
+                        {{response.body |safe}}
+                    </section>
+                        {% if response.wordcount > 100 %}
+                            <button id="responseTruncToggle" class="btn btn-primary">Read More</button>
+                        {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

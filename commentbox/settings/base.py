@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'commentbox',
     'comment',
     'storages',
+    'commentresponse',
 ]
 
 MIDDLEWARE = [

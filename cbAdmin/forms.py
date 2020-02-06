@@ -1,5 +1,5 @@
 from django import forms
-from .models import CommentResponse
+from commentresponse.models import CommentResponse
 from commentbox.models import CommentBox, NotificationList, CbType
 
 
